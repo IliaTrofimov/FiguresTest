@@ -112,6 +112,18 @@ namespace Figures
             return Math.Sqrt(p * (p - s1) * (p - s2) * (p - s3));
         }
 
+        public bool IsRight()
+        {
+            double s1 = Side12;
+            double s2 = Side23;
+            double s3 = Side31;
+            s1 *= s1;
+            s2 *= s2;
+            s3 *= s3;
+
+            return (s1 + s2 == s3) || (s2 + s3 == s1) || (s1 + s3 == s2);
+        }
+
         public override string ToString()
         {
             return $"Triangle(S12={Side12}, S23={Side23}, S31={Side31})";

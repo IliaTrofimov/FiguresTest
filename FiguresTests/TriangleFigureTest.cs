@@ -26,12 +26,23 @@ namespace FiguresTests
         }
 
         [TestMethod]
+        public void IsRightTriangleTest()
+        {
+            Triangle t = new Triangle(0, 0, 3, 0, 0, 4);
+            Assert.IsTrue(t.IsRight(), $"\n{t} should be right-angled with hypotenuse 5\n=> Triangle.IsRight() is incorrect");
+
+            t = new Triangle(1, 0, 3, 0, 0, 4);
+            Assert.IsFalse(t.IsRight(), $"\n{t} should not be right-angled\n=> Triangle.IsRight() is incorrect");
+        }
+
+        [TestMethod()]
         public void RightTriangleAreaTest()
         {
             double a = new Random(Seed).NextDouble();
             Triangle t = new Triangle(0, 0, a, 0, 0, a);
             Assert.AreEqual(a * a / 2, t.GetArea(), Epsilon, $"\n{t} calculated area is wrong (should be a*a/2 = {a}*{a}/2)\n=> Triangle.GetArea() formula is incorrect");
         }
+
 
         [TestMethod]
         public void TriangleAreaFromHeightTest()
